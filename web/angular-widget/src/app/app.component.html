@@ -1,0 +1,109 @@
+<main class="shell">
+  <section class="hero">
+    <div>
+      <p class="eyebrow">Angular spotlight</p>
+      <h1>{{ name }}</h1>
+      <p class="strap">{{ role }} · {{ intro }}</p>
+    </div>
+    <div class="badge">
+      <span class="years">3</span>
+      <span class="label">years shipping production UI</span>
+    </div>
+  </section>
+
+  <section class="focus">
+    <header>
+      <h2>Focus areas</h2>
+      <p>Click to explore the craft pillars that make my Angular work shine.</p>
+    </header>
+    <div class="focus-grid">
+      @for (area of focusAreas; track area.label) {
+        <button
+          type="button"
+          class="focus-card"
+          [class.focus-card--active]="area === selectedFocus()"
+          (click)="selectFocus(area)"
+        >
+          <span class="focus-card__label">{{ area.label }}</span>
+          <p>{{ area.summary }}</p>
+        </button>
+      }
+    </div>
+    <article class="focus-detail">
+      <h3>
+        {{ selectedFocus().label }}
+        <small>highlight reel</small>
+      </h3>
+      <ul>
+        @for (item of selectedFocus().highlights; track item) {
+          <li>{{ item }}</li>
+        }
+      </ul>
+    </article>
+  </section>
+
+  <section class="timeline">
+    <header>
+      <h2>Experience timeline</h2>
+      <p>Pairing Angular modules with React ecosystems to deliver measurable wins.</p>
+    </header>
+    <div class="timeline__entries">
+      @for (entry of timeline; track entry.period) {
+        <article class="timeline__item">
+          <p class="timeline__period">{{ entry.period }}</p>
+          <h3>{{ entry.role }} · {{ entry.company }}</h3>
+          <p class="timeline__summary">{{ entry.summary }}</p>
+          <ul>
+            @for (achievement of entry.achievements; track achievement) {
+              <li>{{ achievement }}</li>
+            }
+          </ul>
+        </article>
+      }
+    </div>
+  </section>
+
+  <section class="projects">
+    <header>
+      <h2>Project snapshots</h2>
+      <p>Recent wins where Angular & React played together.</p>
+    </header>
+    <div class="projects__grid">
+      @for (project of projects; track project.name) {
+        <article class="projects__card">
+          <h3>{{ project.name }}</h3>
+          <p>{{ project.description }}</p>
+          <ul class="tag-strip">
+            @for (tool of project.stack; track tool) {
+              <li>{{ tool }}</li>
+            }
+          </ul>
+          <p class="projects__metric">{{ project.metric }}</p>
+        </article>
+      }
+    </div>
+  </section>
+
+  <section class="toolbox">
+    <header>
+      <h2>Tooling comfort zone</h2>
+      <p>Pairing Angular’s structure with React’s expressiveness.</p>
+    </header>
+    <ul class="toolbox__tags">
+      @for (tool of toolset; track tool) {
+        <li>{{ tool }}</li>
+      }
+    </ul>
+  </section>
+
+  <footer class="cta">
+    <div>
+      <h2>Let’s build the next polished interface</h2>
+      <p>
+        Comfortable partnering with product, design, and backend teams to ship resilient,
+        measurable experiences.
+      </p>
+    </div>
+    <a class="cta__button" href="mailto:avery.carter@devmail.dev">Book a teardown</a>
+  </footer>
+</main>
